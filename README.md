@@ -18,6 +18,7 @@ At the end of the project, the following relationships are created:
 To successully run this project, the following software(s) need to be installed in your machine: 
 
 1. **Python** - You can download it from their [official site](https://www.python.org/downloads/).
+2. **Pipenv** - This is a Python virtual environment management tool that automatically creates and manages a virtualenv for your projects, as well as adds/removes packages from your Pipfile. You can download it from their [official site](https://pypi.org/project/pipenv/).
 
 ## Project Set-Up Instructions
 
