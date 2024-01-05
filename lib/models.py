@@ -40,6 +40,7 @@ class Restaurant(Base):
 
     def review(self):
         return self.reviews
+    
     def customer(self):
         return self.customers
 
