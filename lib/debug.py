@@ -60,3 +60,31 @@ if __name__ == '__main__':
         print(f"\n{customer.first_name} {customer.last_name} has reviewed the following restaurants:")
         for restaurant in customer.restaurant():
             print(f"{restaurant.name}")
+
+    #Customer full_name: Returns the full name of the customer, with the first name and the last name  concatenated, Western style.
+    customers=session.query(Customer).all()
+    print("\nPrinting customers full names")
+    for customer in customers:
+        print(customer.full_name())
+
+    #Customer favorite restaurant: Returns the restaurant instance that has the highest star rating from this customer
+    customers=session.query(Customer).all()
+    print("\nPrinting a customer's highest rating")
+    for customer in customers: 
+        print(f"{customer.first_name} {customer.last_name}'s highest rating: {customer.favorite_restaurant()}")
+
+    #Review full_reviews
+    reviews=session.query(Review).all()
+    print("\nReturning the full review")
+    for review in reviews:
+        print(review.full_review())
+
+    #Restaurant fanciest: Returns one restaurant instance for the restaurant that has the highest price
+    print("\nReturning one restaurant instance for the restaurant that has the highest price")
+    print(Restaurant.fanciest_restaurant(session))
+
+    #Restaurant all reviews: Returns a list of strings with all the reviews for this restaurant
+    print("\nReturning a list of strings with all the reviews for this restaurant")
+    restaurants=session.query(Restaurant).all()
+    for restaurant in restaurants:
+        print(restaurant.all_reviews())

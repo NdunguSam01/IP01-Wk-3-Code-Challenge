@@ -23,7 +23,30 @@ class Customer(Base):
     
     def restaurant(self):
         return self.restaurants
+    
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
 
+    def favorite_restaurant(self):
+        ratings=[]
+        if self.reviews:
+            customer_reviews=self.review()
+            for review in customer_reviews:
+                ratings.append(review.star_rating)
+
+            return max(ratings)
+        
+    def add_review(self, restaurant, star_rating):
+        new_review=Review(star_rating=star_rating, restaurant=restaurant, customer=self)
+        self.reviews.append(new_review)
+
+    def delete_review(self, restaurant, session): #Passing in the session in order to delete the rows from the table
+        deleted_review=[review for review in self.reviews if review.restaurant == restaurant]
+        for review in deleted_review:
+            session.delete(review)
+        
+        session.commit()
+        
 class Restaurant(Base):
 
     __tablename__='restaurants'
@@ -43,7 +66,16 @@ class Restaurant(Base):
     
     def customer(self):
         return self.customers
+    
+    @classmethod
+    def fanciest_restaurant(cls, session):
+        fanciest_restaurants=session.query(cls).order_by(cls.price.desc()).first()
+        return (f"The fanciest restaurant in {fanciest_restaurants.name} with a price of ${fanciest_restaurants.price}")
 
+    def all_reviews(self):
+        return [review.full_review() for review in self.reviews]
+    
+    
 class Review(Base):
 
     __tablename__='reviews'
@@ -64,3 +96,6 @@ class Review(Base):
     
     def restaurant(self):
         return self.restaurants
+
+    def full_review(self):
+        return (f"Review for {self.restaurants.name} by {self.customers.full_name()}: {self.star_rating} stars.")
