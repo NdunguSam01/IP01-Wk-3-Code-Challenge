@@ -88,3 +88,14 @@ if __name__ == '__main__':
     restaurants=session.query(Restaurant).all()
     for restaurant in restaurants:
         print(restaurant.all_reviews())
+
+    #Customer add_review: Adding a new review
+    customer=session.query(Customer).first() #Getting the first customer from the database
+    restaurant=session.query(Restaurant).first().id #Getting the first restaurant from the database
+
+    if customer and restaurant:
+        add_new_review=customer.add_review(restaurant,5) #Creating a new review
+
+        #Adding the new review to the session and committing it to the database
+        session.add(add_new_review)
+        session.commit()

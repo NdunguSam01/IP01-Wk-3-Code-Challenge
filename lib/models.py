@@ -37,8 +37,8 @@ class Customer(Base):
             return max(ratings)
         
     def add_review(self, restaurant, star_rating):
-        new_review=Review(star_rating=star_rating, restaurant=restaurant, customer=self)
-        self.reviews.append(new_review)
+        new_review=Review(customer_id=self.id, restaurant_id=restaurant, star_rating=star_rating )
+        return new_review
 
     def delete_review(self, restaurant, session): #Passing in the session in order to delete the rows from the table
         deleted_review=[review for review in self.reviews if review.restaurant == restaurant]
