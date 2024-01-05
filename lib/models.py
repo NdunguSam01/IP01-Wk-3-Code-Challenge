@@ -13,7 +13,7 @@ class Customer(Base):
     last_name=Column(String)
 
     reviews = relationship('Review', back_populates='customers')
-    restaurants = relationship('Restaurant',secondary='reviews' ,back_populates='customers',viewonly=True)
+    restaurants = relationship('Restaurant',secondary='reviews' ,back_populates='customers')
 
     def __repr__(self):
         return f"Customer(id={self.id}, first_name={self.first_name}, last_name={self.last_name})"
@@ -37,15 +37,18 @@ class Customer(Base):
             return max(ratings)
         
     def add_review(self, restaurant, star_rating):
-        new_review=Review(customer_id=self.id, restaurant_id=restaurant, star_rating=star_rating )
+        new_review=Review(customer_id=self.id, restaurant_id=restaurant, star_rating=star_rating)
+        self.reviews.append(new_review)
         return new_review
 
     def delete_review(self, restaurant, session): #Passing in the session in order to delete the rows from the table
-        deleted_review=[review for review in self.reviews if review.restaurant == restaurant]
-        for review in deleted_review:
+        deleted_reviews=[review for review in self.reviews if review.restaurants == restaurant]
+
+        for review in deleted_reviews:
             session.delete(review)
-        
+
         session.commit()
+        session.refresh(self)
         
 class Restaurant(Base):
 

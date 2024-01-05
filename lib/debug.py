@@ -90,8 +90,11 @@ if __name__ == '__main__':
         print(restaurant.all_reviews())
 
     #Customer add_review: Adding a new review
+    print("\nAdding a new review")
     customer=session.query(Customer).first() #Getting the first customer from the database
     restaurant=session.query(Restaurant).first().id #Getting the first restaurant from the database
+
+    print(f"Reviews count before creating a new review: {session.query(Review).count()}")
 
     if customer and restaurant:
         add_new_review=customer.add_review(restaurant,5) #Creating a new review
@@ -99,3 +102,16 @@ if __name__ == '__main__':
         #Adding the new review to the session and committing it to the database
         session.add(add_new_review)
         session.commit()
+        print(f"Reviews count after creating a new review: {session.query(Review).count()}")
+
+    
+    #Customer delete_review: Removes all their reviews for this restaurant
+    print("\nDeleting all their reviews for this restaurant")
+
+    print(f"Reviews count before deletion: {session.query(Review).count()}")
+    customer_review_to_delete=session.query(Customer).first()
+    restaurant_to_be_deleted=session.query(Restaurant).first()
+
+    customer_review_to_delete.delete_review(restaurant_to_be_deleted,session)
+    session.commit()
+    print(f"Reviews count after deletion: {session.query(Review).count()}")
