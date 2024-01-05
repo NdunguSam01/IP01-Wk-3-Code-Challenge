@@ -10,11 +10,6 @@ engine = create_engine("sqlite:///restaurants.db")
 Session = sessionmaker(bind=engine)
 session = Session()
 
-#Deleting data in the database to allow creation of new records
-session.query(Customer).delete()
-session.query(Restaurant).delete()
-session.query(Review).delete()
-
 def add_data():
 
     customers=[
