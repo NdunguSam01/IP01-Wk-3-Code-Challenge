@@ -26,17 +26,17 @@ In order to successfully view the output of this project, create a new directory
 
 1. **Cloning**- clone the repository by typing the following command into your terminal: 
 
-        ```
-        git clone https://github.com/NdunguSam01/IP01-Wk-3-Code-Challenge.git
-        ```
+    ```
+    git clone https://github.com/NdunguSam01/IP01-Wk-3-Code-Challenge.git
+    ```
 
     Optionally, you can download the zipped file by clicking the green Code button then selecting the "Download ZIP" option.
 
 2. **Installing dependencies** - since this project needs various dependencies to run, type the following command in your terminal:
 
-        ```
-        pipenv install
-        ```
+    ```
+    pipenv install
+    ```
 
     After this operation is completed, run the following command to enter into the virtual environment:
 
