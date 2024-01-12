@@ -1,30 +1,31 @@
 # IP01 Wk1 Code Challenge
+
 ## Description
 
-The aim of this project is to create a restaurant-review domain. 
+The aim of this project is to create a restaurant-review domain.
 
 It creates three models (Customer, Restaurant and Reviews) and creates relationship(s) between the them and displays the required data using SQLAlchemy via the created relationships.
 
-At the end of the project, the following relationships are created: 
+At the end of the project, the following relationships are created:
 
 1. A 'has-many' relationship between a Restaurant and Reviews
 2. A 'has-many' relationship between a Customer and Reviews
 3. A 'one-to-one' relationship between a Review and a Restaurant
-3. A 'one-to-one' relationship between a Review and a Customer
-4. A 'has-many' relationsip between a Restaurant and a Customer via the Review model 
+4. A 'one-to-one' relationship between a Review and a Customer
+5. A 'has-many' relationsip between a Restaurant and a Customer via the Review model
 
 ## Project Pre-requisites
 
-To successully run this project, the following software(s) need to be installed in your machine: 
+To successully run this project, the following software(s) need to be installed in your machine:
 
 1. **Python** - You can download it from their [official site](https://www.python.org/downloads/).
 2. **Pipenv** - This is a Python virtual environment management tool that automatically creates and manages a virtualenv for your projects, as well as adds/removes packages from your Pipfile. You can download it from their [official site](https://pypi.org/project/pipenv/).
 
 ## Project Set-Up Instructions
 
-In order to successfully view the output of this project, create a new directory where you want to store the project files, navigate into it and follow the instructions below: 
+In order to successfully view the output of this project, create a new directory where you want to store the project files, navigate into it and follow the instructions below:
 
-1. **Cloning**- clone the repository by typing the following command into your terminal: 
+1. **Cloning**- clone the repository by typing the following command into your terminal:
 
     ```
     git clone https://github.com/NdunguSam01/IP01-Wk-3-Code-Challenge.git
@@ -44,7 +45,6 @@ In order to successfully view the output of this project, create a new directory
     pipenv shell
     ```
 
-
 3. **Running the scripts** - to view the output, navigate into the lib folder and type the following command in your terminal
 
     ```
@@ -53,16 +53,16 @@ In order to successfully view the output of this project, create a new directory
 
     The debug.py is the script that contains all the methods used to complete the project's intended purpose.
 
-
 ## Expected Results
 
 Once the project successfully runs, you should be able to see the results on the terminal
 
 ## Author
+
 [Samuel Muigai](https://github.com/NdunguSam01)
 
+## License
 
-## License 
 MIT License
 
 Copyright &copy; 2024 Samuel Muigai
